@@ -5,4 +5,4 @@
 VERITYSIGNER_HOME=`dirname "$0"`
 VERITYSIGNER_HOME=`dirname "$VERITYSIGNER_HOME"`
 
-java -Xmx512M -jar "$VERITYSIGNER_HOME"/framework/VeritySigner.jar "$@"
+/usr/lib/jvm/java-7-openjdk-amd64/bin/java -Xmx512M -jar vendor/qcom/proprietary/b2g_common-noship/jar/VeritySigner.jar "$@"
