@@ -34,8 +34,8 @@ libext4_utils_la_CPPFLAGS := $(LIBSELINUX_CFLAGS) $(LIBSPARSE_CFLAGS)
 libext4_utils_la_LDFLAGS  := $(LIBSPARSE_LIBS)
 libext4_utils_la_LDFLAGS  += -lcutils -lsparse -lselinux
 
-### Build make_ext4fs binary
-bin_PROGRAMS = make_ext4fs
+### Build make_ext4fs ext2simg binary
+bin_PROGRAMS = make_ext4fs ext2simg
 
 make_ext4fs_SOURCES := make_ext4fs_main.c canned_fs_config.c
 make_ext4fs_CFLAGS  := $(AM_CFLAGS)
@@ -43,6 +43,14 @@ make_ext4fs_CFLAGS  += -DANDROID
 make_ext4fs_CFLAGS  += -DHOST
 make_ext4fs_LDADD   := libext4_utils.la
 make_ext4fs_LDADD   += -lcutils -lsparse
+
+ext2simg_SOURCES := ext2simg.c
+ext2simg_CFLAGS  := $(AM_CFLAGS)
+ext2simg_CFLAGS  += -DANDROID
+ext2simg_CFLAGS  += -DHOST
+ext2simg_LDADD   := libext4_utils.la
+ext2simg_LDADD   += -lcutils -lsparse
+
 endif
 
 ext4_utils_includedir=$(includedir)/ext4_utils
