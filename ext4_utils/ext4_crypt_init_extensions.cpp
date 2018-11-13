@@ -39,7 +39,6 @@
 #define TAG "ext4_utils"
 
 static const std::string arbitrary_sequence_number = "42";
-static const int vold_command_timeout_ms = 60 * 1000;
 
 static int set_system_de_policy_on(char const* dir);
 
@@ -89,6 +88,7 @@ int e4crypt_set_directory_policy(const char* dir)
         "vendor_ce", "vendor_de",
         "media",
         "data", "user", "user_de",
+        "apex",
     };
     std::string prefix = "/data/";
     for (auto d: directories_to_exclude) {
