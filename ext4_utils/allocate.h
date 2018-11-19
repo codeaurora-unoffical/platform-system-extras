@@ -69,6 +69,6 @@ void append_region(struct block_allocation *alloc,
 	u32 block, u32 len, int bg);
 struct block_allocation *create_allocation();
 int append_oob_allocation(struct block_allocation *alloc, u32 len);
-void print_blocks(FILE* f, struct block_allocation *alloc);
+void print_blocks(FILE* f, struct block_allocation *alloc, char separator);
 
 #endif

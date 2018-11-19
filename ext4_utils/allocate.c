@@ -141,14 +141,15 @@ static void dump_region_lists(struct block_allocation *alloc) {
 }
 #endif
 
-void print_blocks(FILE* f, struct block_allocation *alloc)
+void print_blocks(FILE* f, struct block_allocation *alloc, char separator)
 {
+        fputc(separator, f);
 	struct region *reg;
 	for (reg = alloc->list.first; reg; reg = reg->next) {
 		if (reg->len == 1) {
-			fprintf(f, " %d", reg->block);
+			fprintf(f, "%d", reg->block);
 		} else {
-			fprintf(f, " %d-%d", reg->block, reg->block + reg->len - 1);
+			fprintf(f, "%d-%d", reg->block, reg->block + reg->len - 1);
 		}
 	}
 	fputc('\n', f);
