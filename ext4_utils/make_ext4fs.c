@@ -651,7 +651,7 @@ int make_ext4fs_internal(int fd, const char *_directory, const char *_target_out
 			} else {
 				fprintf(block_list_file, "%s", p->filename);
 			}
-			print_blocks(block_list_file, p);
+			print_blocks(block_list_file, p, ':');
 			struct block_allocation* pn = p->next;
 			free_alloc(p);
 			p = pn;
