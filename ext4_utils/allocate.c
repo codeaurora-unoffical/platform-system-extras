@@ -147,9 +147,9 @@ void print_blocks(FILE* f, struct block_allocation *alloc, char separator)
 	struct region *reg;
 	for (reg = alloc->list.first; reg; reg = reg->next) {
 		if (reg->len == 1) {
-			fprintf(f, "%d", reg->block);
+			fprintf(f, "%d ", reg->block);
 		} else {
-			fprintf(f, "%d-%d", reg->block, reg->block + reg->len - 1);
+			fprintf(f, "%d-%d ", reg->block, reg->block + reg->len - 1);
 		}
 	}
 	fputc('\n', f);
