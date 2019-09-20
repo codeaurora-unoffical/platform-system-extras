@@ -62,4 +62,5 @@
 
 AC_OUTPUT([ \
     Makefile \
+    ext4_utils.pc \
   ])
