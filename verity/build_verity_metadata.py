@@ -16,7 +16,7 @@ METADATA_SIZE = BLOCK_SIZE * 8
 def run(cmd):
     p = subprocess.Popen(cmd, stdout=subprocess.PIPE)
     output, _ = p.communicate()
-    print output
+    print(output)
     if p.returncode:
         exit(-1)
 
@@ -40,7 +40,7 @@ def sign_verity_table(table, signer_path, key_path, signer_args=None):
             else:
               args_list = shlex.split(signer_args)
               cmd = [signer_path] + args_list + [table_file.name, key_path, signature_file.name]
-            print cmd
+            print(cmd)
             run(cmd)
             return signature_file.read()
 
@@ -90,7 +90,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     if args.dest == 'size':
-        print get_verity_metadata_size(args.partition_size)
+        print(get_verity_metadata_size(args.partition_size))
     else:
         build_verity_metadata(args.blocks / 4096, args.metadata_image,
                               args.root_hash, args.salt, args.block_device,
