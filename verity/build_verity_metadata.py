@@ -1,4 +1,4 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 import argparse
 import os
@@ -27,7 +27,7 @@ def build_metadata_block(verity_table, signature):
     table_len = len(verity_table)
     block = struct.pack("II256sI", MAGIC_NUMBER, VERSION, signature, table_len)
     block += verity_table
-    block = block.ljust(METADATA_SIZE, '\x00')
+    block = block.ljust(METADATA_SIZE, b'\x00')
     return block
 
 def sign_verity_table(table, signer_path, key_path, signer_args=None):
@@ -54,7 +54,7 @@ def build_verity_table(block_device, data_blocks, root_hash, salt):
                 data_blocks,
                 root_hash,
                 salt)
-    return table
+    return table.encode()
 
 def build_verity_metadata(data_blocks, metadata_image, root_hash, salt,
         block_device, signer_path, signing_key, signer_args=None):
